@@ -7,16 +7,15 @@ openidm/samples/sync-with-ldap-bidirectional/conf/ \
 # Putting the schema-files in new folders for optional use
 cd /opt/repo/
 
-cp /tmp/openidm/db/postgresql/scripts/openidm.pgsql postgres/02_openidm.sql
-cp /tmp/openidm/db/postgresql/scripts/activiti.postgres.create.engine.sql postgres/03_activiti.postgres.create.engine.sql
-cp /tmp/openidm/db/postgresql/scripts/activiti.postgres.create.history.sql postgres/04_activiti.postgres.create.identity.sql
-cp /tmp/openidm/db/postgresql/scripts/activiti.postgres.create.identity.sql postgres/05_activiti.postgres.create.history.sql
-cp /tmp/openidm/db/postgresql/scripts/audit.pgsql postgres/06_audit.sql
-cp /tmp/openidm/db/postgresql/scripts/default_schema_optimization.pgsql postgres/07_default_schema_optimization.sql
+cp /tmp/openidm/db/postgresql/scripts/openidm.pgsql /docker-entrypoint-initdb.d/02_openidm.sql
+cp /tmp/openidm/db/postgresql/scripts/activiti.postgres.create.engine.sql /docker-entrypoint-initdb.d/03_activiti.postgres.create.engine.sql
+cp /tmp/openidm/db/postgresql/scripts/activiti.postgres.create.history.sql /docker-entrypoint-initdb.d/04_activiti.postgres.create.identity.sql
+cp /tmp/openidm/db/postgresql/scripts/activiti.postgres.create.identity.sql /docker-entrypoint-initdb.d/05_activiti.postgres.create.history.sql
+cp /tmp/openidm/db/postgresql/scripts/audit.pgsql /docker-entrypoint-initdb.d/06_audit.sql
+cp /tmp/openidm/db/postgresql/scripts/default_schema_optimization.pgsql /docker-entrypoint-initdb.d/07_default_schema_optimization.sql
 
-cp /tmp/openidm/db/postgresql/conf/datasource.jdbc-default.json openidm/conf/datasource.jdbc-default.json
-cp /tmp/openidm/db/postgresql/conf/repo.jdbc.json openidm/conf/repo.jdbc.json
+cp /tmp/openidm/db/postgresql/conf/datasource.jdbc-default.json /opt/repo/openidm/conf/datasource.jdbc-default.json
+cp /tmp/openidm/db/postgresql/conf/repo.jdbc.json /opt/repo/openidm/conf/repo.jdbc.json
 
-sed 's/localhost/opendj/;s/1389/389/' openidm/samples/sync-with-ldap-bidirectional/conf/provisioner.openicf-ldap.json > openidm/conf/provisioner.openicf-ldap.json
-
-sed -i 's/localhost:5432/postgres:5432/g' openidm/conf/datasource.jdbc-default.json
+sed 's/localhost/opendj/;s/1389/389/' /opt/repo/openidm/samples/sync-with-ldap-bidirectional/conf/provisioner.openicf-ldap.json > /opt/repo/openidm/conf/provisioner.openicf-ldap.json
+sed -i 's/openidm.host=localhost/openidm.host=iam.example.com/;s/.*openidm.repo.host.*/openidm.repo.host=postgres/;s/.*openidm.repo.port.*/openidm.repo.port=5432/' /opt/openidm/resolver/boot.properties
