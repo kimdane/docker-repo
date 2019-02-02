@@ -8,6 +8,7 @@ ENV GIT_REPO https://github.com/ConductAS/identity-stack-dockerized.git
 WORKDIR /opt/repo
 
 VOLUME ["/opt/repo"]
+VOLUME ["/docker-entrypoint-initdb.d"]
 
 RUN ./modify-files.sh
 CMD ["tail -f /var/log/*"]
