@@ -10,5 +10,5 @@ WORKDIR /opt/repo
 VOLUME ["/opt/repo"]
 VOLUME ["/docker-entrypoint-initdb.d"]
 
-RUN ./modify-files.sh
-CMD ["tail -f /var/log/*"]
+ADD modify-files.sh /opt/modify-files.sh
+CMD ["/opt/modify-files.sh"]
