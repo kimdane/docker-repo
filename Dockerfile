@@ -11,4 +11,5 @@ VOLUME ["/opt/repo"]
 VOLUME ["/docker-entrypoint-initdb.d"]
 
 ADD modify-files.sh /opt/modify-files.sh
+RUN chmod +x /opt/modify-files.sh
 CMD ["/opt/modify-files.sh"]
