@@ -6,7 +6,7 @@ fi
 file=/opt/repo/bin/staging/openidm.zip
 if [ -s "$file" ]; then
 	## Unziping and extracting schema-files from openidm to postgres
-	unzip /opt/repo/bin/staging/openidm.zip -d /opt/repo/
+	unzip -n /opt/repo/bin/staging/openidm.zip -d /opt/repo/
 
 	# Putting the schema-files in new folders for optional use
 	cp /tmp/openidm/db/postgresql/scripts/openidm.pgsql /docker-entrypoint-initdb.d/02_openidm.sql
@@ -38,12 +38,13 @@ if [ -e "$dir" ]; then
 	mv /opt/repo/opendj /opt/repo/opendj-conf
 	if [ -s "$file" ]; then
 		## Unziping and extracting opendj
-		unzip /opt/repo/bin/staging/opendj.zip -d /opt/repo/
+		unzip -n /opt/repo/bin/staging/opendj.zip -d /opt/repo/
 	fi
 	cp -rv /opt/repo/opendj-conf/* /opt/repo/opendj/
 else
+	echo "Could not find folders. Exiting"
 	if [ -s "$file" ]; then
 		## Unziping and extracting opendj
-		unzip /opt/repo/bin/staging/opendj.zip -d /opt/repo/
+		unzip -n /opt/repo/bin/staging/opendj.zip -d /opt/repo/
 	fi
 fi
