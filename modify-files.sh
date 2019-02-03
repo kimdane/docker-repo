@@ -29,7 +29,6 @@ fi
 dir=/opt/repo/openidm-conf
 if [ -e "$dir" ]; then
 	cp -rv /opt/repo/openidm-conf/* /opt/repo/openidm/
-  rm -rf /opt/repo/openidm-conf
 fi
 
 file=/opt/repo/bin/staging/opendj.zip
