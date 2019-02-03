@@ -9,5 +9,7 @@ WORKDIR /opt/repo
 
 VOLUME ["/opt/repo"]
 
-ADD modify-files.sh modify-files.sh
-RUN ./modify-files.sh
+RUN apt-get update && apt-get install unzip && apt-get clean
+
+ADD modify-files.sh /opt/modify-files.sh
+RUN /opt/modify-files.sh
