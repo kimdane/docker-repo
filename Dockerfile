@@ -12,4 +12,4 @@ VOLUME ["/opt/repo"]
 RUN apt-get update && apt-get install unzip && apt-get clean
 
 ADD modify-files.sh /opt/modify-files.sh
-RUN /opt/modify-files.sh
+CMD /opt/modify-files.sh
