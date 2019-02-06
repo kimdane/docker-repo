@@ -35,7 +35,7 @@ fi
 
 if [ -e "$openambin" ]; then
 	for zipfile in $(ls $openambin/*.zip)
-		do unzip -qn $zipfile -d /opt/repo/bin/
+		do unzip -qn $zipfile -d $openambin
 		echo "SSOConfig succesfully extracted."
 	done
 	echo "AM succesfully extracted."
