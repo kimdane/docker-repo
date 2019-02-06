@@ -1,11 +1,11 @@
-for zipfile in $(ls /opt/repo/bin/zip/*.zip)
-	do unzip -qn $zipfile -d /opt/repo/bin/
+for zipfile in $(ls /opt/repo/bin/zip/*.zip); do
+	echo "Unzipping $zipfile"
+	unzip -qn $zipfile -d /opt/repo/bin/
 done
 
 openidmbin=/opt/repo/bin/openidm
 opendjbin=/opt/repo/bin/opendj
 openambin=/opt/repo/bin/openam
-
 postgres=/opt/repo/postgres
 
 if [ -e "$openidmbin" ]; then
