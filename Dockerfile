@@ -1,7 +1,7 @@
 FROM debian:latest
 MAINTAINER kimdane
 
-ENV GIT_REPO https://github.com/ConductAS/identity-stack-dockerized.git
+ENV GIT_REPO https://github.com/kimdane/identity-stack-dockerized.git
 
 #RUN mkdir -p /opt/repo; apt-get update; apt-get install -y git; 
 #RUN git clone $GIT_REPO /opt/repo;
