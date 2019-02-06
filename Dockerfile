@@ -8,6 +8,7 @@ ENV GIT_REPO https://github.com/kimdane/identity-stack-dockerized.git
 WORKDIR /opt/repo
 
 VOLUME ["/opt/repo"]
+VOLUME ["/docker-entrypoint-initdb.d"]
 
 RUN apt-get update && apt-get install unzip && apt-get clean
 
